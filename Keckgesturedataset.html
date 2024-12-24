@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Recognizing Actions by Shape-Motion Prototype Trees</title>
+<style type="text/css">
+<!--
+.pagetitle {
+	font-size: 36px;
+	text-align: center;
+	font-weight: bold;
+}
+.pagetitle p {
+	font-weight: bold;
+	font-size: 36px;
+	text-align: center;
+}
+author name {
+	font-size: 24px;
+}
+body {
+	background-image: url(bg23.gif);
+	font-size: 18px;
+	text-align: center;
+	font-weight: normal;
+}
+.author {
+	font-size: 24px;
+	text-align: center;
+}
+.abstract {
+	font-size: 20px;
+	text-align: left;
+}
+.abstract p {
+	font-size: 28px;
+	font-weight: bold;
+	text-align: left;
+}
+.agreement {
+	font-weight: bold;
+	font-size: 20px;
+	text-align: left;
+}
+.Keckgesture {
+	font-weight: bold;
+	font-size: 28px;
+	text-align: left;
+}
+.description {
+	font-size: 24px;
+	text-align: left;
+}
+.descriptiontext {
+	font-size: 20px;
+	text-align: left;
+	font-weight: normal;
+}
+.dataset {
+	font-weight: bold;
+	text-align: left;
+}
+.download{
+	font-size: 20px;
+	text-align: left;
+	font-weight: bold;
+	}
+.downloadtext {
+	font-size: 20px;
+	text-align: left;
+}
+.email {
+	font-size: 20px;
+	line-height: 15pt;
+	text-align: left;
+}
+.update {
+	font-family: "Times New Roman", Times, serif;
+	font-style: italic;
+	text-align: left;
+}
+.lastupdate {
+	text-align: center;
+	color: #00F;
+	font-size: 16px;
+	font-style: italic;
+	font-weight: bold;
+}
+statement {
+	font-size: 20px;
+}
+.abstract.p span {
+	font-weight: bold;
+}
+.abstract.p p {
+	font-weight: bold;
+}
+.statement {
+	font-weight: bold;
+	text-align: left;
+	font-size: 20px;
+}
+.author {
+	font-size: 20px;
+}
+.author {
+	font-size: 22px;
+}
+.question {
+	font-size: 20px;
+}
+
+-->
+</style>
+</head>
+
+<body>
+<table width="1037" border="0" align="center">
+  <tr>
+    <td width="1031" height="466" bgcolor="#FFFFFF">
+    <p class="pagetitle">Recognizing Human Actions by Learning and Matching Shape-Motion Prototype Trees</p>    
+    <p align="center" f><a href="http://www.umiacs.umd.edu/~zhuolin/index.html"; style="color:#06F"><span class="author">Zhuolin Jiang</span></a>,&nbsp;&nbsp;<a href="http://www.adobe.com/technology/people/sanjose/lin.html"; style="color:#06F"><span class="author">Zhe Lin</span></a><span class="author">,&nbsp;&nbsp;<a href="http://www.umiacs.umd.edu/~lsd/"; style="color:#06F">Larry S. Davis</a></span></p>
+    <p class="agreement" style="text-shadow:2px 2px 2px #8F8F8F;">Abstract:</p>
+    <p class="descriptiontext">A shape-motion prototype-based approach is introduced for action recognition. The approach represents an action as a sequence of prototypes for efficient and flexible action matching in long video sequences. During training, an action prototype tree is learned in a joint shape and motion space via hierarchical K-means clustering and each training sequence is represented as a labeled prototype sequence; then a look-up table of prototype-to-prototype distances is generated. During testing, based on a joint probability model of the actor location and action prototype, the actor is tracked while a frame-to-prototype correspondence is established by maximizing the joint probability, which is efficiently performed by searching the learned prototype tree; then actions are recognized using dynamic prototype sequence matching. Distance measures used for sequence matching are rapidly obtained by look-up table indexing, which is an order of magnitude faster than brute-force computation of frame-to-frame distances. Our approach enables robust action matching in challenging situations (such as moving cameras, dynamic backgrounds) and allows automatic alignment of action sequences. Experimental results demonstrate that our approach achieves recognition rates of 92.86 percent on a large gesture data set (with dynamic backgrounds), 100 percent on the Weizmann action data set, 95.77 percent on the KTH action data set, 88 percent on the UCF sports data set, and 87.27 percent on the CMU action data set.</p>
+    </td>
+  </tr>
+  <tr>
+  <td bgcolor="#FFFFFF" align="center"><p class="descriptiontext"><span class="agreement" style="text-shadow:2px 2px 2px #8F8F8F;">Feature Extraction:</span></p>
+  <p class="descriptiontext">Examples of extracting the shape-motion descriptor from a test frame. (a) Input silhouette; (b) image gradient field; (c) raw optical flow field; (d) compensated optical flow field; (e) silhouette-based shape descriptor; (f) HOG-based shape descriptor; (g) motion descriptor computed from the raw optical flow field; (h) motion descriptor computed from the compensated optical flow field.</p>
+  <p><img src="featuredescriptor.png" width="700" height="400" align="absmiddle"/></p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF" class="body">
+    <p class="descriptiontext"><span class="agreement" style="text-shadow:2px 2px 2px #8F8F8F;">Keck Gesture Dataset:</span></p>
+    <p class="descriptiontext">The gesture dataset consisting of 14 different gesture classes, which are a subset of military signals. The following figure shows sample training frames of this dataset. The gesture dataset is collected using a color camera with 640 × 480 resolution. Each of the 14 gestures is performed by three people. In each sequence, the same gesture is repeated three times by each person. Hence there are 3 × 3 × 14 = 126 video sequences for training which are captured using a fixed camera with the person viewed against a simple, static background. There are 4 × 3 × 14 = 168 video sequences for testing which are captured from a moving camera and in the presence of background clutter and other moving objects.</p>
+    <p class="descriptiontext">Gesture Classes: <img src="sample images.png" width="1034" height="309" /></p></td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#FFFFFF" class="agreement"><p style="text-shadow:2px 2px 2px #8F8F8F;">Demo Video:</p>
+      <p align="center">
+          <object width="425" height="344" align="middle">
+          <param name="movie" value="http://www.youtube.com/v/JMxLeJKpWrA&hl=en&fs=1&color1=0x234900&color2=0x4e9e00" />
+          <param name="allowFullScreen" value="true" />
+          <param name="allowscriptaccess" value="always" />
+          <embed src="http://www.youtube.com/v/JMxLeJKpWrA&hl=en&fs=1&color1=0x234900&color2=0x4e9e00" width="425" height="344" align="middle" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true"></embed>
+        </object>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"><p class="download" style="text-shadow:2px 2px 2px #8F8F8F;">Downloads:</p>
+    <p class="statement">*All the materials provided here are only available for noncommercial reserach use.</p>
+    <p class="descriptiontext">All sequences are stored using AVI file format (MPEG V3-compressed version is available on-line). Uncompressed version is available on demand. There are 42 training video files and 56 testing video files. Each file contains about three subsequences used as a sequence in our experiments. The subdivision of each file into sequences in terms of start-frame and end-frame is given in:</p>    <ul>
+      <li class="downloadtext"><a href="PrototypeTree/sequences.txt"; style="color:#06F">Sequences.txt</a></li>
+      <li class="downloadtext"><a href="PrototypeTree/Keck_Dataset.zip"; style="color:#06F">Keck Gesture Dataset</a></li>
+      <li class="downloadtext"><a href="PrototypeTree/bgsubtraction.zip"; style="color:#06F">Background Subtraction for Training Set</a></li>
+      <li class="downloadtext"><a href="PrototypeTree/KTHBoundingBoxInfo.txt"; style="color:#06F">Bounding Boxes file for KTH Dataset</a></li>
+      <li class="downloadtext"><a href="PrototypeTree/shapemotiondescriptor.zip"; style="color:#06F">Shape-motion Descriptor Extraction</a></li>
+    </ul>
+    <p class="downloadtext" align="left">If you happen to use the dataset or other files provided by this webpage, please cite one of the following papers:</p>
+    <ul><li class="downloadtext">Zhe Lin,  Zhuolin Jiang, and Larry S. Davis, &quot;Recognizing Actions by Shape-Motion Prototype Trees, &quot; IEEE 12th International Conference on Computer Vision (ICCV), pp.444-451, 2009. [<a href="Publications/ICCV2009_ActionSMPT.pdf"; style="color:#06F">pdf</a>][<a href="Publications/ICCV2009Slide.pdf"; style="color:#06F">slide</a>]</li>
+    <li class="downloadtext"><a class="text">Zhuolin Jiang</a>,  Zhe Lin, and Larry S. Davis, &quot;Recognizing Human Actions by Learning and Matching Shape-Motion Prototype Trees&quot;. IEEE Transactions on Pattern Analysis and  Machine Intelligence, 2012, 34(3): 533-547.  </span>[<a href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6136521"; style="color:#06F">pdf</a>]&nbsp;</li></ul>
+    <p align="left" class="question">If you have any inquires or questions about this dataset, please contact: </p>
+    <p class="email">Zhuolin Jiang (<a href="mailto:zhuolin@umiacs.umd.edu"; style="color:#06F">zhuolin@umiacs.umd.edu</a>)  </p></td>
+  </tr>
+  <tr>
+    <td height="18" bgcolor="#FFFFFF" ><p><span style="font-style:italic; font-size:20px; margin:10px 0; color:#09F; font-weight: bold; text-align: center;">Latest update 08-08-2012</span></p></td>
+  </tr>
+</table>
+</body>
+</html>

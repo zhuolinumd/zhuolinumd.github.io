@@ -1,0 +1,127 @@
+
+The guesture dataset consists of 14 different gesture classes, which include 'turn left', 'turn right', 'attention left', 'attention right', 'flap', 
+'stop left', 'stop right', 'stop both', 'attention both', 'start', 'go back', 'close distance', 'speed up' and 'come near'. It is collected using a 
+color camera with 640x480 resolution. Each of the 14 gestures is performed by three people. The same gesture is repeated three times by each person. 
+Hence there are 126 video sequences for training which are captured using a fixed camera with the person viewed against a simple, static background. 
+There are 168 video sequences for testing which are captured from a moving camera and in the presence of background clutter and other moving objects.
+
+Contact: Zhuolin Jiang (zhuolin@umiacs.umd.edu)
+         Zhe Lin (zhelin@umiacs.umd.edu)
+
+
+Training set: 
+Avi file name (person number-gesture number)-ground truth gesture classes
+
+person 1_gesture1_turn left           frames 176-242, 260-331, 345-422
+person 1_gesture2_turn right          frames 151-225, 240-322, 336-424
+person 1_gesture3_attention left      frames 181-227, 247-291, 315-360
+person 1_gesture4_attention right     frames 207-260, 272-327, 338-393
+person 1_gesture5_flap                frames 185-253, 275-357, 380-460
+person 1_gesture6_stop left           frames 185-250, 260-336, 350-420
+person 1_gesture7_stop right          frames 195-280, 290-375, 395-475
+person 1_gesture8_stop both           frames 190-280, 295-385, 405-493
+person 1_gesture9_attention both      frames 190-240, 250-310, 312-360
+person 1_gesture10_start              frames 156-218, 220-293, 296-372
+person 1_gesture11_go back            frames 99-138, 140-174, 175-216
+person 1_gesture12_close distance     frames 140-174, 180-215, 218-258
+person 1_gesture13_speed up           frames 160-200, 210-250, 260-300
+person 1_gesture14_come near          frames 140-180, 181-214, 215-253
+
+
+person 2_gesture1_turn left           frames 140-195, 199-254, 258-306
+person 2_gesture2_turn right          frames 20-64, 75-130, 135-190
+person 2_gesture3_attention left      frames 130-180, 183-225, 235-266
+person 2_gesture4_attention right     frames 24-72, 80-128, 131-183
+person 2_gesture5_flap                frames 148-194, 200-245, 248-297
+person 2_gesture6_stop left           frames 26-75, 80-140, 146-201
+person 2_gesture7_stop right          frames 135-180, 185-240, 250-305
+person 2_gesture8_stop both           frames 22-75, 83-132,140-192
+person 2_gesture9_attention both      frames 120-158, 166-199, 206-238
+person 2_gesture10_start              frames 16-78, 80-140, 141-205
+person 2_gesture11_go back            frames 122-162, 163-194, 195-222
+person 2_gesture12_close distance     frames 17-52, 55-90, 92-136
+person 2_gesture13_speed up           frames 155-188, 192-227, 231-260
+person 2_gesture14_come near          frames 55-77, 80-111, 114-148
+
+person 3_gesture1_turn left           frames 116-162, 163-200, 202-240
+person 3_gesture2_turn right          frames 2-39, 42-82, 84-122
+person 3_gesture3_attention left      frames 136-182, 186-230, 234-274
+person 3_gesture4_attention right     frames 20-65, 67-103, 106-142
+person 3_gesture5_flap                frames 125-167, 171-218, 220-266
+person 3_gesture6_stop left           frames 1-43, 47-96, 100-150
+person 3_gesture7_stop right          frames 103-143, 145-190, 192-234
+person 3_gesture8_stop both           frames 2-51, 53-103, 105-150
+person 3_gesture9_attention both      frames 130-170, 171-203, 205-244
+person 3_gesture10_start              frames 9-51, 52-88, 89-125
+person 3_gesture11_go back            frames 115-141, 142-166, 167-190
+person 3_gesture12_close distance     frames 15-40, 41-70, 71-90
+person 3_gesture13_speed up           frames 14-38, 39-63, 65-84
+person 3_gesture14_come near          frames 6-30, 32-56, 57-82
+
+
+Testing set:
+Avi file name (person number-gesture number)-ground truth gesture classes
+
+person 1_gesture1_turn left           frames 62-106, 113-161, 169-222
+person 1_gesture2_turn right          frames 57-104, 110-161, 165-221
+person 1_gesture3_attention left      frames 48-78, 81-115, 119-160
+person 1_gesture4_attention right     frames 58-90, 93-130, 132-169
+person 1_gesture5_flap                frames 27-78, 83-138, 148-206
+person 1_gesture6_stop left           frames 39-98, 102-167, 168-237
+person 1_gesture7_stop right          frames 30-90, 95-155, 158-216
+person 1_gesture8_stop both           frames 49-117, 118-184, 190-255
+person 1_gesture9_attention both      frames 47-80, 81-123, 125-169
+person 1_gesture10_start              frames 35-89, 90-149, 150-206
+person 1_gesture11_go back            frames 40-64, 65-87, 88-103
+person 1_gesture12_close distance     frames 73-96, 97-115, 116-139
+person 1_gesture13_speed up           frames 23-46, 50-75, 79-105
+person 1_gesture14_come near          frames 33-58, 59-84, 86-111
+
+
+person 2_gesture1_turn left           frames 33-81, 85-137, 140-186
+person 2_gesture2_turn right          frames 12-64, 68-122, 129-202
+person 2_gesture3_attention left      frames 46-84, 92-124, 137-178
+person 2_gesture4_attention right     frames 62-105, 106-148, 150-201
+person 2_gesture5_flap                frames 17-63, 65-109, 113-160
+person 2_gesture6_stop left           frames 21-65, 70-121, 123-178
+person 2_gesture7_stop right          frames 34-80, 82-132, 135-179
+person 2_gesture8_stop both           frames 33-81, 83-129, 140-193
+person 2_gesture9_attention both      frames 43-83, 85-124, 126-172
+person 2_gesture10_start              frames 1-59, 60-128, 129-208
+person 2_gesture11_go back            frames 38-61, 62-87, 88-105
+person 2_gesture12_close distance     frames 27-50, 54-84, 86-108
+person 2_gesture13_speed up           frames 33-57, 58-89, 90-120
+person 2_gesture14_come near          frames 55-82, 83-109, 110-140
+
+person 3_gesture1_turn left           frames 19-50, 53-88, 89-132
+person 3_gesture2_turn right          frames 69-103, 105-138, 140-176
+person 3_gesture3_attention left      frames 51-92, 95-129, 132-166
+person 3_gesture4_attention right     frames 56-93, 100-126, 130-165
+person 3_gesture5_flap                frames 14-50, 51-88, 90-129
+person 3_gesture6_stop left           frames 35-77, 81-118, 124-163
+person 3_gesture7_stop right          frames 23-68, 70-111, 113-157
+person 3_gesture8_stop both           frames 42-86, 89-129, 130-172
+person 3_gesture9_attention both      frames 17-48, 50-85, 86-127
+person 3_gesture10_start              frames 39-81, 83-122, 123-166
+person 3_gesture11_go back            frames 39-56, 57-81, 82-108
+person 3_gesture12_close distance     frames 29-59, 60-90, 91-116
+person 3_gesture13_speed up           frames 64-92, 94-124, 126-151
+person 3_gesture14_come near          frames 30-53, 55-80, 82-102
+
+
+person 4_gesture1_turn left           frames 20-62, 64-106, 112-153
+person 4_gesture2_turn right          frames 43-80, 84-122, 126-172
+person 4_gesture3_attention left      frames 44-73, 76-109, 113-148
+person 4_gesture4_attention right     frames 32-66, 68-104, 108-143
+person 4_gesture5_flap                frames 18-72, 84-141, 150-203
+person 4_gesture6_stop left           frames 62-124, 133-196, 199-266
+person 4_gesture7_stop left           frames 48-100, 108-152, 162-220
+person 4_gesture8_stop both           frames 60-117, 126-177, 189-247
+person 4_gesture9_attention both      frames 33-66, 68-105, 108-143
+person 4_gesture10_start              frames 70-119, 125-170, 185-234
+person 4_gesture11_go back            frames 26-49, 50-76, 77-98
+person 4_gesture12_close distance     frames 29-50, 51-77, 78-104
+person 4_gesture13_speed up           frames 38-58, 59-85, 86-107
+person 4_gesture14_come near          frames 36-58, 59-80, 81-105
+
+ 

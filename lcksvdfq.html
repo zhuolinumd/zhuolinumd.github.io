@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Frequent questions for LC-KSVD</title>
+<style type="text/css">
+<!--
+.pagetitle {
+	font-size: 36px;
+	text-align: center;
+	font-weight: bold;
+}
+.pagetitle p {
+	font-weight: bold;
+	font-size: 36px;
+	text-align: center;
+}
+author name {
+	font-size: 24px;
+}
+body {
+	background-image: url();
+	font-size: 18px;
+	text-align: center;
+	font-weight: normal;
+}
+.author {
+	font-size: 24px;
+	text-align: center;
+}
+.abstract {
+	font-size: 20px;
+	text-align: left;
+}
+.abstract p {
+	font-size: 28px;
+	font-weight: bold;
+	text-align: left;
+}
+.agreement {
+	font-weight: bold;
+	font-size: 20px;
+	text-align: left;
+}
+.Keckgesture {
+	font-weight: bold;
+	font-size: 28px;
+	text-align: left;
+}
+.description {
+	font-size: 24px;
+	text-align: left;
+}
+.descriptiontext {
+	font-size: 20px;
+	text-align: left;
+	font-weight: normal;
+}
+.dataset {
+	font-weight: bold;
+	text-align: left;
+}
+.download{
+	font-size: 20px;
+	text-align: left;
+	font-weight: bold;
+	}
+.downloadtext {
+	font-size: 23px;
+	text-align: left;
+}
+.downloadtext1 {
+	font-size: 23px;
+	text-align: left;
+	font-weight: bold;
+.email {
+	font-size: 20px;
+	line-height: 15pt;
+	text-align: left;
+}
+.update {
+	font-family: "Times New Roman", Times, serif;
+	font-style: italic;
+	text-align: left;
+}
+.lastupdate {
+	text-align: center;
+	color: #00F;
+	font-size: 16px;
+	font-style: italic;
+	font-weight: bold;
+}
+statement {
+	font-size: 20px;
+}
+.abstract.p span {
+	font-weight: bold;
+}
+.abstract.p p {
+	font-weight: bold;
+}
+.statement {
+	font-weight: bold;
+	text-align: left;
+	font-size: 20px;
+}
+.author {
+	font-size: 20px;
+}
+.author {
+	font-size: 22px;
+}
+.question {
+	font-size: 20px;
+}
+.size4 {	font-style: normal;
+	text-align:left;
+}
+.size4 {	text-align: left;
+}
+.text {	font-weight:bold
+}
+.agreement p {
+	font-size: 24px;
+}
+-->
+</style>
+</head>
+
+<body>
+<table width="996" border="0" align="center">
+  <tr>
+    <td width="990" height="2713" align="left" bgcolor="#FFFFFF" class="downloadtext"><p class="downloadtext1">Q1 : For SRC method, I don't know which method is used to solve  the L1-norm problem. I used LARS, and find the result is very poor, can you  give me a help?  If I want to get a high  recognition rate what method should I use?</p>
+<p>Answer: As you know, the SRC approach uses L1-norm regularization.  For the L1 sparse coding, you can use the package &ldquo;Efficient Sparse coding  algorithm&rdquo; (http://ai.stanford.edu/~hllee/softwares/nips06-sparsecoding.htm) or  SPAMS (http://spams-devel.gforge.inria.fr/downloads.html). For the dictionary  of SRC, you need to L2-normalize the dictionary items which are the training  samples.  More importantly, the training  samples contain a lot of bad quality (full 0) images. Directly using these bad  samples as dictionary items is not good. You can try to remove those bad images  first by thresholding the norm of every image.</p>
+<p class="downloadtext1">Q2: I  use your code to learn a dictionary from a set of image patches (using  intensities), after applying the   initialization4LCKSVD code the learned dictionary for each class(in my  case 2 classes) are in order and separable(as I look at them by eye) but after  applying the &quot;labelconsistentksvd1&quot; code the learned dictionary atoms  are mixed for two classes(the label of each dictionary atom is not the same as  initial dictionary) and I think it's because the SVD code trick that tries to  polish those dictionary atoms that are similar and replace them by selecting  random patches of image? how can I solve this issue?</p>
+<p>Answer: Our approach does not strictly and explicitly enforce a  label to each dictionary item during optimization. After dictionary  initialization, you know, we only use a label consistent term to encourage the  signals from a class to high peak at some specific items. So a dictionary item  might not belong to one specific class, it can be shared between classes. In  addition, a patch might belong to different classes. So the patch-based inputs  might not be suitable for our framework. You know, all of our experiments use  holistic/global representations as input signals.</p>
+<p class="downloadtext1">Q3: After  learning the dictionary using a set of labeled training data, how can I use the  estimated classifier W to classify  a set  of unlabeled data as it seems we need the label of test data in your  &quot;classification&quot; code that is not available for the case of test  data. Can you please briefly explain the steps that I need to do for  classification using the learned dictionary?</p>
+<p>Answer: You can look into the long version of our paper (PAMI  paper). For a test image, you need to compute the sparse code first, then  multiple it with the learned W to obtain a label vector. The index of the  maximum element of the label vector is its class label.</p>
+<p class="downloadtext1">Q4: I have a question about the dictionary size selection in the  LC-KSVD. When the dictionary size is set to 570 (15 training samples per  class), I run your code and can perfectly obtain the results reported in your  paper (94.5 for LC-KSVD1, and 95.0 for LC-KSVD2 on Yale B). However, when I  want to use all the train.samp and increase the dictionary size (the line 23 in  the &quot;main&quot; function) to 1216, the recognition results  become horrible. Like 0.02 for LC-KSVD1, and  0.81 for LC-KSVD2. These are far from the reuslt 96.7 in your paper. </p>
+<p>Answer: I finished this experiment three years ago, i am not sure  the detailed parameters. But one thing i can suggest, you know, the 1216  training samples contains a lot of bad quality (full 0) images, learned  dictionary should be not good. You can try to remove those bad images first by  thresholding the norm of every image, which means that if the norm of one image  is smaller than a threshold, it will be removed from the training data.  Therefore, the final dictionary size should not be 1216 although we use all the  training samples.</p>
+<p class="downloadtext1">Q5: I downloaded your code and  it runs successfully. But the problem is how to test the algorithm  using different data set. So how can i convert the data set images to feature  vector matlab mat file. Do you mind to share this code?</p>
+<p>Answer: For the random face feature, please check the project  webpage. We have already provided the demo code. For the spatial pyramid feature, we just use  the standard code from Prof. Lazebnik (http://www.cs.illinois.edu/homes/slazebni/research/SpatialPyramid.zip).  You might also be interested in looking at LLC code:  http://www.ifp.illinois.edu/~jyang29/LLC.htm. Their code also includes spatial  pyramid part but they used sparse coding for the SIFT features while the  standard spatial pyramid uses simple vector quantization. Our approach used vector  quantization.</p>
+<p class="downloadtext1">Q6: Similar to SRC, the dictionary items learned by LC-KSVD preserve  category information. Is it due to the reason that the initial dictionary is  learned by employing several iterations of K-SVD within each class and then  combining all the outputs of each K-SVD?</p>
+<p>Answer: Apart from the dictionary is initialized by using individual  ksvd within each class, the label consistent constraint-Discriminative sparse  code error also helps to preserve the category information for each dictionary item.</p>
+<p class="downloadtext1">Q7: The label information can be made use of by Label  Consistent. If the dictionary is randomly generated,  the label information can still be used? What  is the relationship between the initialization and the random? Can the  initialization speed the iteration or others reasons? </p>
+<p>Answer: The initial dictionary should not be randomly generated  because we need to preserve label information for each dictionary item. For the  initialization step, we run k-svd in each class and combine their outputs. So  the dictionary item has its class label. For the optimization step, we add a  label consistency penalty term ||Q-AX|| to (implicitly) preserve the label  information for each item. The label information for dictionary item is useful  because it improves the discriminativeness of the sparse codes. </p>
+<p class="downloadtext1">Q8: I tried to run your LC-KSVD code, but I have this error:  &quot;Attempt to execute SCRIPT OMPbox/private/ompmex as a function&quot;. I  use Matlab R2012a and Mac OS. </p>
+<p>Answer: This should be mex file problem. Please try to recompile the OMP and KSVD toolboxes.</p>
+<p class="downloadtext1">Q9: I want to do an extension work based on your Label Consistent K-SVD, but   could you please provide the Matlab codes for SRC,   LLC, K-SVD and discriminant K-SVD so that we can conduct the simulations   according to your paper.</p>
+<p>Answer: Unfortunately, I do not keep them anymore after I left UMD. (1) LLC code and K-SVD are provided by the authors of original papers. You can search on the web. (2) You   might reimplement D-KSVD by simply removing the   label consistency term from our objective function. You  need to look into the original paper to figure out how to set the parameters in the objective function of D-KSVD. (3) For SRC, you can just   use all the training samples as the dictionary items, then use any L1   solver, such as &quot;Efficient Sparse coding  algorithm&quot; and &quot;SPAMS&quot; for sparse coding. Finally, you could use reconstruction errors for classification. </p>
+<p class="downloadtext1">Q10: The features used in the Caltech-256 dataset and the UCF sport action dataset are unavailable in the project page. Would you like to share these features with us and give the details about the feature extraction process?</p>
+<p>Answer: Unfortunately, I cannot find those feature mat files anymore. For UCF, I used action bank features, you can download the features from the author webpage. For Caltech256, we used the same feature extraction procedure as Caltech101.  Please refer to Q5. You can find the answer. </p>
+<p class="downloadtext1">Q11: If I change the dictionary size of the source code or want to use it on a new dataset, how to choose the parameters \alpha and \beta to obtain good recognition performances? </p>
+<p>Answer: \alpha and \beta are the relative weights with respect to the reconstruction error, the discriminative sparse-code error and the classification error. You can tune them a little bit to get ideal recognition performances for different dictionary sizes or the new dataset. The reason is that the magnitudes of three terms (reconstruction error, the discriminative sparse-code error, classification error) have changed. In our experiments, we ran five-fold cross-validation in the training data to set the parameter values. </p>
+</td>
+  </tr>
+  <tr>
+    <td height="21"><p class="lastupdate"><span style="font-style:italic; font-size:23px; margin:10px 0; text-align: center;">Latest update 03-13-2014</span></p></td>
+  </tr>
+</table>
+</body>
+</html>
