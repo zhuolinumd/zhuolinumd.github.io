@@ -1,289 +1,414 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Zhuolin's Home Page</title>
-    <style type="text/css">
-<!--
-.name {
-	font-size: 24px;
-	color: #F00;
-}
-english {
-	font-family: "Times New Roman", Times, serif;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zhuolin Jiang</title>
+  <meta name="description" content="Zhuolin Jiang — Principal Research Scientist at RTX Technology Research Center." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-body {
-	background-image: url(bg23.gif);
-	text-align: center;
-}
+  <style>
+    :root{
+      --bg: #0b1220;
+      --panel: rgba(255,255,255,.06);
+      --text: #eaf0ff;
+      --muted: rgba(234,240,255,.72);
+      --line: rgba(255,255,255,.12);
+      --accent: #7aa7ff;
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 1040px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f7fb;
+        --panel:#ffffff;
+        --text:#0c1222;
+        --muted: rgba(12,18,34,.72);
+        --line: rgba(12,18,34,.10);
+        --accent:#2f6bff;
+        --shadow: 0 12px 30px rgba(12,18,34,.10);
+      }
+    }
 
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: #eef4f8;
+      color: #111;
+      line-height: 1.65;
+    }
 
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
 
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 26px 18px 60px; }
 
--->
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 220px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), rgba(123,255,209,.8));
+      box-shadow: 0 0 0 4px rgba(122,167,255,.16);
+      flex: 0 0 auto;
+    }
+    .brand-title{ font-weight: 800; letter-spacing: .2px; }
+    .brand-sub{ color: var(--muted); font-size: 13px; margin-top: -2px; }
 
-    </style>
+    .nav{
+      display:flex; flex-wrap:wrap; gap:10px;
+      justify-content:flex-end;
+    }
+    .nav a{
+      font-size:14px;
+      font-weight:700;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+    }
+    .nav a:hover{
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.05);
+      text-decoration: none;
+    }
+    .hero{
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+    @media (max-width: 860px){
+      .hero{ grid-template-columns: 1fr; }
+    }
 
+    .card{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .photo-card{ padding: 14px; }
+    .avatar{
+      width: 100%;
+      max-width: 320px;
+      height: 320px;
+      object-fit: cover;
+      object-position: center top;
+      margin: 0 auto;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      display: block;
+      background: rgba(255,255,255,.04);
+    }
+    .photo-caption{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
 
-    <script type="text/javascript">
+    .content-card{ padding: 18px; }
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-21483924-1']);
-  _gaq.push(['_trackPageview']);
+    h1{
+      margin: 6px 0 6px;
+      font-size: 30px;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+    }
+    .lead{ color: var(--muted); margin: 0 0 10px; }
+    .meta{
+      margin: 10px 0 14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .pill{
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+    .links{
+      margin: 10px 0 0;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .btn.primary{
+      border-color: rgba(122,167,255,.35);
+      background: linear-gradient(135deg, rgba(122,167,255,.22), rgba(123,255,209,.12));
+    }
+   .section{
+      margin-top: 18px;
+      padding: 16px 18px;
+    }
+    .section h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -.2px;
+    }
+    .section ul{ margin: 8px 0 0 18px; }
+    .section li{ margin: 6px 0; color: var(--muted); }
+    .section li strong{ color: var(--text); }
 
+    .subhead{
+      margin: 12px 0 6px;
+      font-size: 14px;
+      letter-spacing: .2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 800;
+    }
 
-    </script>
+    .footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      opacity: .9;
+    }
+    .divider{ height:1px; background: var(--line); margin: 14px 0; }
 
-    <style type="text/css">
-.shadowblur{
--moz-box-shadow:0px 0px 10px 1px #777777;
--webkit-box-shadow:0px 0px 10px 1px #777777;
-box-shadow:0px 0px 10px 1px #777777;
-filter: progid:DXImageTransform.Microsoft.dropShadow(color=#000000, offX=7, offY=7, positive=true); } 
+    .email-strong{
+      color: #111;
+      font-weight: 700;
+    }
 
-    </style>
-
-
+    .old-news{
+      display: none;
+      margin-top: 10px;
+    }
+    .news-toggle{
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #555;
+      cursor: pointer;
+    }
+    .news-toggle:hover{
+      color: #111;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  </style>
 </head>
 
 <body>
-<table width="1042" border="0" align="center" cellspacing="0">
-    <tr cellspacing="0">
-        <td height="307" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF" cellspacing="0">
-            <table width="1026" border="0" align="center" cellspacing="0">
-                <tr>
-                    <td width="419" height="292" align="center"><img src="jzl5.png" width="400" height="288"
-                                                                     class="shadowblur" alt="CSS Drop shadow effect"/>
-                    </td>
-                    <td width="603" align="justify" valign="center"><p
-                            style="font-size:21px; font-family:Arial, Helvetica, sans-serif" align="justify">I am a
-                        Principal Research Scientist at RTX Technology Research Center. Previously, I was a Senior
-                        Machine Learning Scientist at Emerald Innovations (2020~2024) and Scientist II at Raytheon BBN
-                        Technologies (2015~2020). I also worked as a Researcher at Huawei's Noah's Ark Lab (2013~2014)
-                        and as an <a href="https://www.umiacs.umd.edu/people/zhuolin" ; style="color:#06F">Assistant
-                            Research Scientist</a> in the Computer Vision Lab at the University of Maryland (2010~2012)
-                        with Prof. <a href="http://www.umiacs.umd.edu/~lsd/" ; style="color:#06F">Larry S. Davis</a>. My
-                        research interests focus on developing and applying machine learning techniques across diverse
-                        domains, including computer vision, natural language processing and RF radar systems.
-                    </p>
-                        <p style="font-size:21px; font-family:Arial, Helvetica, sans-serif; line-height:.5em"
-                           align="left">Email: zhuolinumd@gmail.com</p>
-                        <p style="font-size:21px; font-family:Arial, Helvetica, sans-serif" align="left">[<a
-                                href="Publications.html" ; style="color:#06F">Publications</a> | <a
-                                href="http://scholar.google.com/citations?user=X55lT7kAAAAJ&amp;hl=en" ;
-                                style="color:#06F">Citations</a> | <a href="Research.html" ;
-                                                                      style="color:#06F">Research</a> | <a
-                                href="Resources.html" ; style="color:#06F">Resources</a> | <a
-                                href="Resume/resume_Dec2016.pdf" ; style="color:#06F">Resume</a>]</p></td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td height="10" colspan="2"></td>
-    </tr>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <div>
+          <div class="brand-title">Zhuolin Jiang</div>
+          <div class="brand-sub">Principal Research Scientist · RTX</div>
+        </div>
+      </div>
 
-    <tr>
-        <td height="10" colspan="2" bgcolor="#FFFFFF"><p
-                style="margin:2px 0; font-size:22px; font-weight:bold; text-align:left; font-family: Tahoma, Geneva, sans-serif; text-shadow:2px 2px 2px #8F8F8F;">
-            <a name="News">News</a>:</p></td>
-    </tr>
-    <tr>
-        <td height="279" colspan="2" bgcolor="#FFFFFF" , style="text-align:left">
-            <ul>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">The source code for
-                    submodular reranking for retrieval is released now! [<a
-                            href="http://www.umiacs.umd.edu/~fyang/papers/submodular.html" ; style="color:#06F">project
-                        page</a>]
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">One paper is
-                    accepted by NIPS 2014
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">One paper is
-                    accepted by ACCV 2014 as an oral paper
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">One paper is
-                    accepted by CVPR 2014
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">The source code for
-                    incremental dictionary learning is released now! [<a href="projectlcksvd.html" ; style="color:#06F">project
-                        page</a>]
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">One paper is
-                    accepted by WACV 2014
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">One paper is
-                    accepted by ICCV 2013
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">One paper is
-                    accepted by BMVC 2013
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">The source code for
-                    submodular dictionary learning is released now! [<a href="projectsdl.html" ; style="color:#06F">project
-                        page</a>]
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">One paper is
-                    accepted by TPAMI
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">Three papers are
-                    accepted by CVPR 2013
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">Our paper won the
-                    Best Student Paper Award at the ACCV 2012 conference
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">Two papers are
-                    accepted by ACCV 2012 (one oral, one poster)
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">The source code for
-                    MMI is released now! [<a href="http://www.cs.umd.edu/~qiu/proj/mmi.html" ; style="color:#06F">project
-                        page</a>]
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">The source code for
-                    LC-KSVD is released now! [<a href="projectlcksvd.html" ; style="color:#06F">project page</a>]
-                </li>
-            </ul>
-        </td>
-    </tr>
+      <nav class="nav" aria-label="Primary">
+        <a href="Publications.html">Publications</a>
+        <a href="https://scholar.google.com/citations?user=X55lT7kAAAAJ&hl=en" target="_blank" rel="noopener">Citations</a>
+        <a href="Research.html">Research</a>
+        <a href="Resources.html">Resources</a>
+        <a href="Resume/resume_Dec2016.pdf">Resume</a>
+      </nav>
+    </header>
 
-    <tr>
-        <td height="10" colspan="2"></td>
-    </tr>
-    <tr>
-        <td height="33" colspan="2" bgcolor="#FFFFFF">
-            <p style="margin:2px 0; font-size:22px; font-weight:bold; text-align:left; font-family: Tahoma, Geneva, sans-serif; text-shadow:2px 2px 2px #8F8F8F;">
-                <a name="Selected Publications">Academic Service</a></p></td>
-    </tr>
-    <tr>
-        <td height="447" colspan="2" align="left" bgcolor="#FFFFFF">
-            <ul>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif">
-                    Journal Reviewer
-                    <ul>
-                        <li style="font-size:21px; font-family:Arial, Helvetica, sans-serif">IEEE Transactions on
-                            Pattern Analysis and Machine Intelligence
-                        </li>
-                        <li style="font-size:21px; font-family:Arial, Helvetica, sans-serif">IEEE Transactions on
-                            Circuits and Systems for Video Technology
-                        </li>
-                        <li style="font-size:21px; font-family:Arial, Helvetica, sans-serif">IEEE Transactions on Neural
-                            Networks and Learning Systems
-                        </li>
-                        <li style="font-size:21px; font-family:Arial, Helvetica, sans-serif">IEEE Transactions on
-                            Multimedia
-                        </li>
-                        <li style="font-size:21px; font-family:Arial, Helvetica, sans-serif">IEEE Transactions on Image
-                            Processing
-                        </li>
-                        <li style="font-size:21px; font-family:Arial, Helvetica, sans-serif">IEEE Transactions on
-                            Information Forensics and Security
-                        </li>
-                        <li style="font-size:21px; font-family:Arial, Helvetica, sans-serif">IEEE Transactions on
-                            Cybernetics
-                        </li>
-                        <li style="font-size:21px; font-family:Arial, Helvetica, sans-serif">ACM Transactions on
-                            Intelligent Systems and Technology
-                        </li>
-                        <li style="font-size:21px; font-family:Arial, Helvetica, sans-serif">International Journal of
-                            Computer Vision
-                        </li>
-                        <li style="font-size:21px; font-family:Arial, Helvetica, sans-serif">Computer Vision and Image
-                            Understanding
-                        </li>
-                        <li style="font-size:21px; font-family:Arial, Helvetica, sans-serif">Image and Vision
-                            Computing
-                        </li>
-                        <li style="font-size:21px; font-family:Arial, Helvetica, sans-serif">Pattern Recognition</li>
-                    </ul>
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif">
-                    Program Committee
-                    <ul>
-                        <li style="font-size:21px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif">ML/AI:
-                            ICML, NIPS, ICLR, IJCAI, AAAI
-                        </li>
-                        <li style="font-size:21px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif">Vision:
-                            CVPR, ECCV, ICCV, WACV
-                        </li>
-                        <li style="font-size:21px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif">NLP:
-                            ACL, EMNLP, NAACL, COLING
-                        </li>
-                    </ul>
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif">
-                    Guest Editor
-                </li>
-                <ul>
-                    <li style="font-size:21px; font-family:'Trebuchet MS', Arial, Helvetica, sans-serif">Pattern
-                        Recognition Special Issue on <a href="./PRSI_DFL.html" ; style="color:#06F">Discriminative
-                            Feature Learning from Big Data for Visual Recognition</a></li>
-                </ul>
-            </ul>
-        </td>
-    </tr>
-    <tr>
-        <td height="10" colspan="2"></td>
-    </tr>
+    <main class="hero">
+      <aside class="card photo-card">
+        <img class="avatar" src="jzl5.png" alt="Zhuolin Jiang" />
+        <div class="photo-caption">
+          <span class="pill">Trustworthy LLMs · Agentic AI · Multimodal AI</span>
+      </aside>
 
-    <tr>
-        <td height="33" colspan="2" bgcolor="#FFFFFF">
-            <p style="margin:2px 0; font-size:22px; font-weight:bold; text-align:left; font-family: Tahoma, Geneva, sans-serif; text-shadow:2px 2px 2px #8F8F8F;">
-                <a name="Research Projects">Invited Talks</a></p></td>
-        <td width="8"></td>
-    </tr>
+      <section class="card content-card">
+        <h1>Zhuolin Jiang</h1>
 
-    <tr>
-    <tr>
-        <td height="133" colspan="2" align="left" bgcolor="#FFFFFF">
-            <ul>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">CCF Young Computer
-                    Scientists & Engineers Forum, Guangzhou, 12/2014
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">Symposium on Mobile
-                    Graphics and Interactive Applications at SIGGRAPH Asia, Shenzhen, 12/2014
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">Nanyang
-                    Technological University, Singapore, 11/2014
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">The University of
-                    Hong Kong, Hong Kong, 10/2014
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">The Hong Kong
-                    Polytechnic University, Hong Kong, 01/2013
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">The Hong Kong
-                    University of Science and Technology, Hong Kong, 01/2013
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">The Chinese
-                    University of Hong Kong, Hong Kong, 01/2013
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">University of
-                    Maryland, College Park, USA, 07/2011
-                </li>
-                <li TYPE="SQUARE" ; style="font-size:21px; font-family:Arial, Helvetica, sans-serif">Panasonic Research,
-                    New Jersey, USA, 06/2011
-                </li>
-            </ul>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" align="left"><!-- Site Meter -->
-            <script type="text/javascript" src="http://s51.sitemeter.com/js/counter.js?site=s51zhuolin">
-            </script>
-            <noscript>
-                <a href="http://s51.sitemeter.com/stats.asp?site=s51zhuolin" target="_top">
-                    <img src="http://s51.sitemeter.com/meter.asp?site=s51zhuolin" alt="Site Meter" border="0"/></a>
-            </noscript>
-            <!-- Copyright (c)2009 Site Meter -->
-        </td>
-    </tr>
-</table>
+        <p class="lead">
+          I am a Principal Research Scientist at RTX Technology Research Center.
+          Previously, I was a Senior Machine Learning Scientist at Emerald Innovations (2020~2024) and Scientist II at Raytheon BBN Technologies (2015~2020).
+          I also worked as a Researcher at Huawei's Noah's Ark Lab (2013~2014) and as an
+          Assistant Research Scientist in the Computer Vision Lab at the University of Maryland (2010~2012) with Prof.
+          <a href="https://www.umiacs.umd.edu/people/lsd" target="_blank" rel="noopener">Larry S. Davis</a>.
+        </p>
+
+        <p class="lead">
+          My research spans learning from vision, language, and RF sensing data, with recent work focusing on trustworthy large language models and agentic AI frameworks for multimodal understanding and reasoning.
+        </p>
+
+        <div class="meta">
+          <span class="pill">Email</span>
+          <span class="email-strong">zhuolinumd@gmail.com</span>
+        </div>
+      </section>
+    </main>
+  <section class="card section" id="students">
+    <h2>Prospective Students</h2>
+    <p>
+      I welcome remote collaboration with motivated students interested in trustworthy LLMs, agentic AI, and related machine learning topics including multimodal and representation learning.
+      Please feel free to contact me by email.
+    </p>
+  </section>
+    <section class="card section" id="news">
+      <h2>News</h2>
+      <ul>
+        <li>
+          One paper is accepted by <strong>ICLR 2026</strong>:
+          <em>FROST: Filtering Reasoning Outliers with Attention for Efficient Reasoning</em>.
+        </li>
+
+        <li>
+          One paper is accepted by <strong>ICML 2025</strong>:
+          <em>A Variational Information Theoretic Approach to Out-of-Distribution Detection</em>.
+        </li>
+      </ul>
+
+      <a href="#" class="news-toggle" onclick="toggleOldNews(event)">
+        Show earlier news
+      </a>
+
+      <ul id="old-news" class="old-news">
+        <li>The source code for submodular reranking for retrieval is released now! <a href="http://www.umiacs.umd.edu/~fyang/papers/submodular.html" target="_blank" rel="noopener">[project page]</a></li>
+        <li>One paper is accepted by NIPS 2014</li>
+        <li>One paper is accepted by ACCV 2014 as an oral paper</li>
+        <li>One paper is accepted by CVPR 2014</li>
+        <li>The source code for incremental dictionary learning is released now! <a href="projectlcksvd.html" target="_blank" rel="noopener">[project page]</a></li>
+        <li>One paper is accepted by WACV 2014</li>
+        <li>One paper is accepted by ICCV 2013</li>
+        <li>One paper is accepted by BMVC 2013</li>
+        <li>The source code for submodular dictionary learning is released now! <a href="projectsdl.html" target="_blank" rel="noopener">[project page]</a></li>
+        <li>One paper is accepted by TPAMI</li>
+        <li>Three papers are accepted by CVPR 2013</li>
+        <li>Our paper won the Best Student Paper Award at the ACCV 2012 conference</li>
+        <li>Two papers are accepted by ACCV 2012 (one oral, one poster)</li>
+        <li>The source code for MMI is released now! <a href="http://www.cs.umd.edu/~qiu/proj/mmi.html" target="_blank" rel="noopener">[project page]</a></li>
+        <li>The source code for LC-KSVD is released now! <a href="projectlcksvd.html" target="_blank" rel="noopener">[project page]</a></li>
+      </ul>
+    </section>
+
+    <section class="card section" id="service">
+      <h2>Academic Service</h2>
+
+      <div class="subhead">Journal Reviewer</div>
+      <ul>
+        <li>IEEE Transactions on Pattern Analysis and Machine Intelligence</li>
+        <li>IEEE Transactions on Circuits and Systems for Video Technology</li>
+        <li>IEEE Transactions on Neural Networks and Learning Systems</li>
+        <li>IEEE Transactions on Multimedia</li>
+        <li>IEEE Transactions on Image Processing</li>
+        <li>IEEE Transactions on Information Forensics and Security</li>
+        <li>IEEE Transactions on Cybernetics</li>
+        <li>ACM Transactions on Intelligent Systems and Technology</li>
+        <li>International Journal of Computer Vision</li>
+        <li>Computer Vision and Image Understanding</li>
+        <li>Image and Vision Computing</li>
+        <li>Pattern Recognition</li>
+      </ul>
+
+      <div class="subhead">Program Committee</div>
+      <ul>
+        <li>ML/AI: ICML, NIPS, ICLR, IJCAI, AAAI</li>
+        <li>Vision: CVPR, ECCV, ICCV, WACV</li>
+        <li>NLP: ACL, EMNLP, NAACL, COLING</li>
+      </ul>
+
+      <div class="subhead">Guest Editor</div>
+      <ul>
+        <li>Pattern Recognition Special Issue on
+          <a href="./PRSI_DFL.html"
+             target="_blank" rel="noopener">
+             Discriminative Feature Learning from Big Data for Visual Recognition
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="card section" id="talks">
+      <h2>Invited Talks</h2>
+      <ul>
+        <li>CCF Young Computer Scientists &amp; Engineers Forum, Guangzhou, 12/2014</li>
+        <li>Symposium on Mobile Graphics and Interactive Applications at SIGGRAPH Asia, Shenzhen, 12/2014</li>
+        <li>Nanyang Technological University, Singapore, 11/2014</li>
+        <li>The University of Hong Kong, Hong Kong, 10/2014</li>
+        <li>The Hong Kong Polytechnic University, Hong Kong, 01/2013</li>
+        <li>The Hong Kong University of Science and Technology, Hong Kong, 01/2013</li>
+        <li>The Chinese University of Hong Kong, Hong Kong, 01/2013</li>
+        <li>University of Maryland, College Park, USA, 07/2011</li>
+        <li>Panasonic Research, New Jersey, USA, 06/2011</li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="y"></span> Zhuolin Jiang</div>
+      <div>
+        <a href="#news">News</a> · <a href="#service">Academic Service</a> · <a href="#talks">Invited Talks</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    function toggleOldNews(e){
+      e.preventDefault();
+      const list = document.getElementById("old-news");
+      const link = e.target;
+
+      if (list.style.display === "none" || list.style.display === "") {
+        list.style.display = "block";
+        link.textContent = "Hide earlier news";
+      } else {
+        list.style.display = "none";
+        link.textContent = "Show earlier news";
+      }
+    }
+  </script>
 </body>
 </html>

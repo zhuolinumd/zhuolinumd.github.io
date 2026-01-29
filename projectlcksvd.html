@@ -1,177 +1,217 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Label Consistent K-SVD: Learning A Discriminative Dictionary for Recognition</title>
-<style type="text/css">
-<!--
-.pagetitle {
-	font-size: 36px;
-	text-align: center;
-	font-weight: bold;
-}
-.pagetitle p {
-	font-weight: bold;
-	font-size: 36px;
-	text-align: center;
-}
-author name {
-	font-size: 24px;
-}
-body {
-	background-image: url(bg23.gif);
-	font-size: 18px;
-	text-align: center;
-	font-weight: normal;
-}
-.author {
-	font-size: 24px;
-	text-align: center;
-}
-.abstract {
-	font-size: 20px;
-	text-align: left;
-}
-.abstract p {
-	font-size: 28px;
-	font-weight: bold;
-	text-align: left;
-}
-.agreement {
-	font-weight: bold;
-	font-size: 20px;
-	text-align: left;
-}
-.Keckgesture {
-	font-weight: bold;
-	font-size: 28px;
-	text-align: left;
-}
-.description {
-	font-size: 24px;
-	text-align: left;
-}
-.descriptiontext {
-	font-size: 20px;
-	text-align: left;
-	font-weight: normal;
-}
-.dataset {
-	font-weight: bold;
-	text-align: left;
-}
-.download{
-	font-size: 20px;
-	text-align: left;
-	font-weight: bold;
-	}
-.downloadtext {
-	font-size: 20px;
-	text-align: left;
-}
-.email {
-	font-size: 20px;
-	line-height: 15pt;
-	text-align: left;
-}
-.update {
-	font-family: "Times New Roman", Times, serif;
-	font-style: italic;
-	text-align: left;
-}
-.lastupdate {
-	text-align: center;
-	color: #00F;
-	font-size: 16px;
-	font-style: italic;
-	font-weight: bold;
-}
-statement {
-	font-size: 20px;
-}
-.abstract.p span {
-	font-weight: bold;
-}
-.abstract.p p {
-	font-weight: bold;
-}
-.statement {
-	font-weight: bold;
-	text-align: left;
-	font-size: 20px;
-}
-.author {
-	font-size: 20px;
-}
-.author {
-	font-size: 22px;
-}
-.question {
-	font-size: 20px;
-}
-.size4 {	font-style: normal;
-	text-align:left;
-}
-.size4 {	text-align: left;
-}
-.text {	font-weight:bold
-}
-.agreement p {
-	font-size: 24px;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Label Consistent K-SVD: Learning A Discriminative Dictionary for Recognition</title>
 
--->
-</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #eef4f8;
+      --card: #ffffff;
+      --text: #0c1222;
+      --muted: rgba(12,18,34,.72);
+      --line: rgba(12,18,34,.12);
+      --accent: #2f6bff;
+      --shadow: 0 12px 30px rgba(12,18,34,.10);
+      --radius: 16px;
+      --max: 1040px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 26px 18px 60px; }
+
+    .card{
+      margin-top: 18px;
+      padding: 18px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    h1{
+      font-size: 30px;
+      letter-spacing: -0.5px;
+      margin: 0 0 10px;
+      text-align: center;
+    }
+    h2{
+      margin-top: 0;
+      font-size: 20px;
+      border-bottom: 1px solid rgba(12,18,34,.10);
+      padding-bottom: 6px;
+    }
+
+    .authors{
+      text-align:center;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .authors a{
+      font-weight: 700;
+    }
+
+    p{
+      font-size: 16px;
+    }
+
+    .figure{
+      text-align:center;
+      margin: 12px 0;
+    }
+    .figure img{
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    ul{
+      margin-left: 18px;
+    }
+    li{
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    .note{
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .footer{
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+      text-align:center;
+    }
+  </style>
 </head>
 
 <body>
-<table width="996" border="0" align="center">
-  <tr>
-    <td width="990" height="435" bgcolor="#FFFFFF">
-    <p class="pagetitle">Label Consistent K-SVD: Learning A Discriminative Dictionary for Recognition</p>
-<p align="center" f><a href="http://www.adobe.com/technology/people/sanjose/lin.html"><a href="https://zhuolinumd.github.io/"; style="color:#06F; font-size:26px">Zhuolin Jiang</a>, &nbsp&nbsp <a href="http://www.adobe.com/technology/people/sanjose/lin.html"; style="color:#06F; font-size:26px">Zhe Lin</a>,&nbsp&nbsp <a href="http://www.umiacs.umd.edu/~lsd/"; style="color:#06F; font-size:26px">Larry S. Davis</a></p>
-    <p class="agreement" style="text-shadow:2px 2px 2px #8F8F8F;">Abstract:</p>
-    <p align="justify"; style="font-size:20px">A label consistent K-SVD (LC-KSVD) algorithmto learn a discriminative dictionary for sparse coding is presented. In addition to using class labels of training data, we also associate label information with each dictionary item (columns of the dictionary matrix) to enforce discriminability in sparse codes during the dictionary learning process. More specifically, we introduce a new label consistency constraint called ‘discriminative sparse-code error’ and combine it with the reconstruction error and the classification error to form a unified objective function. The optimal solution is efficiently obtained using the K-SVD algorithm. Our algorithm learns a single over-complete dictionary and an optimal linear classifier jointly. The incremental dictionary learning algorithm is presented for the situation of limited memory resources. It yields dictionaries so that feature points with the same class labels have similar sparse codes. Experimental results demonstrate that our algorithm outperforms many recently proposed sparse coding techniques for face, action, scene and object category recognition under the same learning conditions.</p></td>
-  </tr>
-  <tr>
-    <td bgcolor="#FFFFFF" class="agreement"><p><span class="agreement" style="text-shadow:2px 2px 2px #8F8F8F;">Examples of Sparse Codes:</span> </p>
-      <p><span class="descriptiontext">Each waveform (below) indicates the sum of absolute sparse codes for different testing samples from the same class</span>.</p>
-    <p><img src="LCKSVD/scexamples.png" width="993" height="362" /></p></td>
-  </tr>
-  <tr>
-    <td height="974" bgcolor="#FFFFFF" ><p class="agreement" style="text-shadow:2px 2px 2px #8F8F8F;">Experimental Results:</p>
-    <p font-size:20px; align="justify"; style="font-size:20px">The feature descriptors used in the Extended YaleB database and AR Face database are random faces. The dimension of a random-face feature in Extended YaleB is 504 while the dimension in AR face is 540. For the Caltech101 dataset, we first extract sift descriptors from 16 x 16 patches which are densely sampled using a grid with a step size of 6 pixels; then we extract the spatial pyramid feature  based on the extracted sift features with three grids of size 1 x 1, 2 x 2 and 4 x 4. To train the codebook for spatial pyramid, we use the standard k-means clustering with k = 1024. Finally, the spatial pyramid feature is reduced to 3000 dimensions by PCA.</p>
-    <p><span class="descriptiontext">(a) Extended YaleB database</span></p>
-    <p align="center"><img src="LCKSVD/27.png" width="508" height="225" /></p>
-    <p><span class="descriptiontext">(b) AR database</span></p>
-    <p align="center"><img src="LCKSVD/29.png" width="409" height="209" /></p>
-    <p><span class="descriptiontext">(c) Caltech101 dataset</span></p>
-    <p align="center"><img src="LCKSVD/31.png" width="608" height="292" /></p>
-    <p><span class="descriptiontext">(d) Fifteen scene category dataset</span></p>
-    <p align="center"><img src="LCKSVD/33.png" width="553" height="160""/></p></td>
-  </tr>
-  <tr>
-    <td bgcolor="#FFFFFF"><p class="agreement" style="text-shadow:2px 2px 2px #8F8F8F;"> Downloads:</p>
-    <p style="font-size:20px; font-weight:bold; font-weight: bold; font-style: italic;" align="left">*All materials provided here are only available for noncommercial research use.</p>
-    <ul>
-      <li class="downloadtext"><a href="LCKSVD/sharingcode-LCKSVD.zip"; style="color:#06F">Source code1</a> (LC-KSVD)</li>
-      <li class="downloadtext"><a href="LCKSVD/incrementallearning_LCKSVD_shared.zip"; style="color:#06F">Source code2</a> (Incremental Dictionary Learning)</li>
-      <li class="downloadtext"><a href="LCKSVD/randomfacefeature.zip"; style="color:#06F">Random face feature extraction</a></li>
-      <li class="downloadtext"><a href="LCKSVD/features/randomfaces4extendedyaleb.zip"; style="color:#06F">Random face features for Extended YaleB</a></li>
-      <li class="downloadtext"><a href="LCKSVD/features/randomfaces4ar.zip"; style="color:#06F">Random face features for AR database</a></li>
-      <li class="downloadtext"><a href="https://drive.google.com/file/d/18hDiTCD_v3i2_j7FauPgzcY6C2ydddr0/view?usp=sharing_link"; style="color:#06F">Spatial pyramid features for Caltech101</a></li>
-      <li class="downloadtext"><a href="LCKSVD/features/spatialpyramidfeatures4scene15.zip"; style="color:#06F">Spatial pyramid features for Scene15</a></li>
-    </ul>
-    <p class="downloadtext" align="left">If you happen to use the source code or other files provided by this webpage, please cite our papers:</p>
-    <ul>
-    <li class="downloadtext" ><span class="size4">Zhuolin Jiang, Zhe Lin, Larry S. Davis. &quot; Learning a Discriminative Dictionary for Sparse Coding via Label Consistent K-SVD&quot;. IEEE  Conference on Computer Vision and Pattern Recognition, 2011.</span> [<a href="Publications/0198.pdf"; style="color:#06F">pdf</a>][<a href="Publications/LCKSVD.pdf"; style="color:#06F">slide</a>][<a href="Publications/CVPR2011_LCKSVD_poster_v1.pdf"; style="color:#06F">poster</a>] </li>
-    <li class="downloadtext" ><span class="size4">Zhuolin Jiang, Zhe Lin, Larry S. Davis. &quot;Label Consistent K-SVD: Learning A Discriminative Dictionary for Recognition&quot;. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013, 35(11): 2651-2664.</span> [<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6516503" ;="">pdf</a>]</li>
-    </ul>
-    <p align="left" class="question">If you have any questions about this source code, please look at <a href="lcksvdfq.html"; style="color:#06F">frequent questions</a> first, you might find the answer. Otherwise, please contact me via (<a href="mailto:zhuolinumd@gmail.com"; style="color:#06F">zhuolinumd@gmail.com</a>)  </p></td>
-  </tr>
-  <tr>
-    <td height="21"><p class="lastupdate"><span style="font-style:italic; font-size:20px; margin:10px 0; color:#09F; font-weight: bold; text-align: center;">Latest update 12-23-2024</span></p></td>
-  </tr>
-</table>
+  <div class="wrap">
+
+    <!-- Title -->
+    <section class="card">
+      <h1>Label Consistent K-SVD: Learning A Discriminative Dictionary for Recognition</h1>
+      <div class="authors">
+        <a href="https://zhuolinumd.github.io/">Zhuolin Jiang</a>,
+        <a href="http://www.adobe.com/technology/people/sanjose/lin.html">Zhe Lin</a>,
+        <a href="http://www.umiacs.umd.edu/~lsd/">Larry S. Davis</a>
+      </div>
+    </section>
+
+    <!-- Abstract -->
+    <section class="card">
+      <h2>Abstract</h2>
+      <p>
+        A label consistent K-SVD (LC-KSVD) algorithm to learn a discriminative dictionary for sparse coding is presented.
+        In addition to using class labels of training data, we also associate label information with each dictionary item
+        to enforce discriminability in sparse codes during the dictionary learning process. We introduce a new label
+        consistency constraint called discriminative sparse-code error and combine it with reconstruction and
+        classification errors to form a unified objective. The optimal solution is efficiently obtained using K-SVD.
+        Experimental results demonstrate superior performance on face, action, scene, and object recognition tasks.
+      </p>
+    </section>
+
+    <!-- Sparse code examples -->
+    <section class="card">
+      <h2>Examples of Sparse Codes</h2>
+      <p class="note">Each waveform indicates the sum of absolute sparse codes for different testing samples from the same class.</p>
+      <div class="figure">
+        <img src="LCKSVD/scexamples.png" width="993" height="362" />
+      </div>
+    </section>
+
+    <!-- Experimental results -->
+    <section class="card">
+      <h2>Experimental Results</h2>
+      <p>
+        Feature descriptors for Extended YaleB, AR Face, Caltech101, and Scene15 datasets are used.
+        Spatial pyramid features are constructed and reduced via PCA. Details follow the original paper.
+      </p>
+
+      <p>(a) Extended YaleB database</p>
+      <div class="figure"><img src="LCKSVD/27.png" width="508" height="225" /></div>
+
+      <p>(b) AR database</p>
+      <div class="figure"><img src="LCKSVD/29.png" width="409" height="209" /></div>
+
+      <p>(c) Caltech101 dataset</p>
+      <div class="figure"><img src="LCKSVD/31.png" width="608" height="292"  /></div>
+
+      <p>(d) Fifteen scene category dataset</p>
+      <div class="figure"><img src="LCKSVD/33.png" width="553" height="160" /></div>
+    </section>
+
+    <!-- Downloads -->
+    <section class="card">
+      <h2>Downloads</h2>
+      <p class="note">All materials provided here are for non-commercial research use only.</p>
+      <ul>
+        <li><a href="LCKSVD/sharingcode-LCKSVD.zip">Source code1</a> (LC-KSVD)</li>
+        <li><a href="LCKSVD/incrementallearning_LCKSVD_shared.zip">Source code2</a> (Incremental Dictionary Learning)</li>
+        <li><a href="LCKSVD/randomfacefeature.zip">Random face feature extraction</a></li>
+        <li><a href="LCKSVD/features/randomfaces4extendedyaleb.zip">Random face features for Extended YaleB</a></li>
+        <li><a href="LCKSVD/features/randomfaces4ar.zip">Random face features for AR database</a></li>
+        <li><a href="https://drive.google.com/file/d/18hDiTCD_v3i2_j7FauPgzcY6C2ydddr0/view?usp=sharing_link">Spatial pyramid features for Caltech101</a></li>
+        <li><a href="LCKSVD/features/spatialpyramidfeatures4scene15.zip">Spatial pyramid features for Scene15</a></li>
+      </ul>
+    </section>
+
+    <!-- Citation -->
+    <section class="card">
+      <h2>Citation</h2>
+      <ul>
+        <li>
+          Zhuolin Jiang, Zhe Lin, Larry S. Davis.
+          “Learning a Discriminative Dictionary for Sparse Coding via Label Consistent K-SVD”.
+          CVPR 2011.
+          [<a href="Publications/0198.pdf">pdf</a>]
+          [<a href="Publications/LCKSVD.pdf">slide</a>]
+          [<a href="Publications/CVPR2011_LCKSVD_poster_v1.pdf">poster</a>]
+        </li>
+        <li>
+          Zhuolin Jiang, Zhe Lin, Larry S. Davis.
+          “Label Consistent K-SVD: Learning A Discriminative Dictionary for Recognition”.
+          IEEE TPAMI, 2013.
+          [<a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6516503">pdf</a>]
+        </li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
+    <section class="card">
+      <p>
+        Questions? Please check
+        <a href="lcksvdfq.html">frequent questions</a>
+        or contact
+        <a href="mailto:zhuolinumd@gmail.com">zhuolinumd@gmail.com</a>.
+      </p>
+    </section>
+
+    <footer class="footer">
+      Latest update 01-27-2026 · © 2026 Zhuolin Jiang
+    </footer>
+
+  </div>
 </body>
 </html>

@@ -1,179 +1,227 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Submodular Dictionary Learning for Sparse Coding</title>
-<style type="text/css">
-<!--
-.pagetitle {
-	font-size: 36px;
-	text-align: center;
-	font-weight: bold;
-}
-.pagetitle p {
-	font-weight: bold;
-	font-size: 36px;
-	text-align: center;
-}
-author name {
-	font-size: 24px;
-}
-body {
-	background-image: url(bg23.gif);
-	font-size: 18px;
-	text-align: center;
-	font-weight: normal;
-}
-.author {
-	font-size: 24px;
-	text-align: center;
-}
-.abstract {
-	font-size: 20px;
-	text-align: left;
-}
-.abstract p {
-	font-size: 28px;
-	font-weight: bold;
-	text-align: left;
-}
-.agreement {
-	font-weight: bold;
-	font-size: 23px;
-	text-align: left;
-}
-.Keckgesture {
-	font-weight: bold;
-	font-size: 28px;
-	text-align: left;
-}
-.description {
-	font-size: 24px;
-	text-align: left;
-}
-.descriptiontext {
-	font-size: 20px;
-	text-align: left;
-	font-weight: normal;
-}
-.dataset {
-	font-weight: bold;
-	text-align: left;
-}
-.download{
-	font-size: 20px;
-	text-align: left;
-	font-weight: bold;
-	}
-.downloadtext {
-	font-size: 20px;
-	text-align: left;
-}
-.email {
-	font-size: 20px;
-	line-height: 15pt;
-	text-align: left;
-}
-.update {
-	font-family: "Times New Roman", Times, serif;
-	font-style: italic;
-	text-align: left;
-}
-.lastupdate {
-	text-align: center;
-	color: #00F;
-	font-size: 16px;
-	font-style: italic;
-	font-weight: bold;
-}
-statement {
-	font-size: 20px;
-}
-.abstract.p span {
-	font-weight: bold;
-}
-.abstract.p p {
-	font-weight: bold;
-}
-.statement {
-	font-weight: bold;
-	text-align: left;
-	font-size: 20px;
-}
-.author {
-	font-size: 20px;
-}
-.author {
-	font-size: 22px;
-}
-.question {
-	font-size: 20px;
-}
-.size4 {	font-style: normal;
-	text-align:left;
-}
-.size4 {	text-align: left;
-}
-.text {	font-weight:bold
-}
-.agreement p {
-	font-size: 24px;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Submodular Dictionary Learning for Sparse Coding</title>
 
--->
-</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #eef4f8;
+      --card: #ffffff;
+      --text: #0c1222;
+      --muted: rgba(12,18,34,.72);
+      --line: rgba(12,18,34,.12);
+      --accent: #2f6bff;
+      --shadow: 0 12px 30px rgba(12,18,34,.10);
+      --radius: 16px;
+      --max: 1040px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 26px 18px 60px;
+    }
+
+    .card{
+      margin-top: 18px;
+      padding: 18px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    h1{
+      font-size: 30px;
+      letter-spacing: -0.5px;
+      margin: 0 0 10px;
+      text-align: center;
+    }
+    h2{
+      margin-top: 0;
+      font-size: 20px;
+      border-bottom: 1px solid rgba(12,18,34,.10);
+      padding-bottom: 6px;
+    }
+
+    .authors{
+      text-align:center;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .authors a{
+      font-weight: 700;
+    }
+
+    p{
+      font-size: 16px;
+    }
+
+    .figure{
+      text-align:center;
+      margin: 14px 0;
+    }
+    .figure img{
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    ul{
+      margin-left: 18px;
+    }
+    li{
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    .note{
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .footer{
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+      text-align:center;
+    }
+  </style>
 </head>
 
 <body>
-<table width="1056" border="0" align="center">
-  <tr>
-    <td width="1197" height="391" bgcolor="#FFFFFF">
-    <p class="pagetitle">Submodular Dictionary Learning for Sparse Coding</p>
-<p align="center" f><a href="https://zhuolinumd.github.io/"; style="color:#06F; font-size:26px">Zhuolin Jiang</a>, &nbsp&nbsp <a style="color:#06F; font-size:26px">Guangxiao Zhang</a>,&nbsp&nbsp <a href="http://www.umiacs.umd.edu/~lsd/"; style="color:#06F; font-size:26px">Larry S. Davis</a></p>
-    <p class="agreement" style="text-shadow:2px 2px 2px #8F8F8F;">Abstract:</p>
-    <p align="justify"; style="font-size:20px">A greedy-based approach to learn a compact and discriminative dictionary for sparse representation is presented. We propose an objective function consisting of two components: entropy rate of a random walk on a graph and a discriminative term. Dictionary learning is achieve by finding a graph topology which maximizes the objective function. By exploiting the monotonicity and submodularity properties of the objective function and the matroid constraint, we present a highly efficient greedy-based optimization algorithm. It is more than an order of magnitude faster than several recently proposed dictionary learning approaches. Moreover, the greedy algorithm gives a near-optimal solution with a (1/2)-approximation bound. Our approach yields dictionaries having the property that feature points from the same class have very similar sparse codes. Experimental results demonstrate that our approach outperforms several recently proposed dictionary learning techniques for face, action and object category recognition.</p></td>
-  </tr>
-  <tr>
-    <td height="603" bgcolor="#FFFFFF">
-    <p align="left"><span class="agreement" style="text-shadow:2px 2px 2px #8F8F8F;">Submodular Dictionary Learning:</span></p>
-    <p  align="left"; style="font-size:20px">(1) Entropy Rate of A RandomWalk (which favors  compact and homogenous clusters)</p>
-    <p align="center"><img src="SDL/entropyrate.png" width="780" height="227"/></p>
-    <p  align="left"; style="font-size:20px">(2) Discriminative Function (which encourages clusters to be class pure and less number of clusters)</p>
-    <p align="center"><img src="SDL/discrminative.png" width="720" height="224" /></p></td>
-  </tr>
-  <tr>
-    <td bgcolor="#FFFFFF" class="agreement"><p><span class="agreement" style="text-shadow:2px 2px 2px #8F8F8F;">Examples of Sparse Codes:</span> </p>
-      <p><span class="descriptiontext">Each waveform (below) indicates the sum of absolute sparse codes for different testing samples from the same class</span>.</p>
-    <p><img src="SDL/scexamples.png" width="1050" height="312" /></p></td>
-  </tr>
-  <tr>
-    <td height="974" bgcolor="#FFFFFF" ><p class="agreement" style="text-shadow:2px 2px 2px #8F8F8F;">Experimental Results:</p>
-    <p font-size:20px; align="justify"; style="font-size:20px">The feature descriptors used in the Extended YaleB database are random faces. The dimension of a random-face feature is 504. For the Caltech101 dataset, we first extract sift descriptors from 16 x 16 patches which are densely sampled using a grid with a step size of 6 pixels; then we extract the spatial pyramid feature  based on the extracted sift features with three grids of size 1 x 1, 2 x 2 and 4 x 4. To train the codebook for spatial pyramid, we use the standard k-means clustering with k = 1024. Finally, the spatial pyramid feature is reduced to 3000 dimensions by PCA.</p>
-    <p align="left"><span class="descriptiontext">(1) Classification accuracy performances using different approaches with different dictionary sizes</span></p>
-    
-    <p align="center"><img src="SDL/recognitionrate.png" width="700" height="298" /></p>
-    <p><span class="descriptiontext">(2) Computation time (s) for dictionary training on the Extended YaleB database</span></p>
-    <p align="center"><img src="SDL/trainingtimeextendedyaleb.png" width="800" height="140" /></p>
-    <p><span class="descriptiontext">(3) Computation time (s) for dictionary training on the Caltech101 dataset</span></p>
-    <p align="center"><img src="SDL/trainingtimecaltech101.png" width="800" height="151" /></p></td>
-  </tr>
-  <tr>
-    <td height="288" bgcolor="#FFFFFF"><p class="agreement" style="text-shadow:2px 2px 2px #8F8F8F;"> Downloads:</p>
-    <p style="font-size:20px; font-weight:bold; font-weight: bold; font-style: italic;" align="left">*All materials provided here are only available for noncommercial research use.</p>
-    <ul>
-      <li class="downloadtext"><a href="SDL/SDL-code.zip"; style="color:#06F">Source Code Only</a></li>
-      <li class="downloadtext"><a href="https://drive.google.com/file/d/1zGqArr1rpI2U6W6XIlVjr66mbgkA8fDH/view?usp=share_link"; style="color:#06F">Training Data Only</a></li>
-      <li class="downloadtext"><a href="https://drive.google.com/file/d/1qExf_5C6Bj8SWrGHGqju1gPUFkUo-7VJ/view?usp=share_link"; style="color:#06F">Source Code and Training Data</a></li>
-    </ul>
-    <p class="downloadtext" align="left">If you happen to use the source code or other files provided by this webpage, please cite the following paper:</p>
-    <ul>
-    <li class="downloadtext"><span class="size4">Zhuolin Jiang, Guangxiao Zhang, Larry S. Davis. &quot;Submodular Dictionary Learning for Sparse Coding&quot;. IEEE  Conference on Computer Vision and Pattern Recognition, 2012.</span> [<a href="Publications/SubmodularDL.pdf"; style="color:#06F">pdf</a>][<a href="Publications/SDL_CVPR2012_Slide.pdf"; style="color:#06F">slide</a>][<a href="Publications/SubmodularDL-supp.pdf"; style="color:#06F">supplementary materials</a><a href="Publications/CVPR2011_LCKSVD_poster_v1.pdf"; style="color:#06F"></a>] </li>
-    </ul>
-    <p align="left" class="question">If you have any questions about this source code, please contact: Zhuolin Jiang (<a href="mailto:zhuolinumd@gmail.com"; style="color:#06F">zhuolinumd@gmail.com</a>)</p></td>
-  </tr>
-  <tr>
-    <td height="21"><p class="lastupdate"><span style="font-style:italic; font-size:20px; margin:10px 0; color:#09F; font-weight: bold; text-align: center;">Latest update 12-23-2024</span></p></td>
-  </tr>
-</table>
+  <div class="wrap">
+
+    <!-- Title -->
+    <section class="card">
+      <h1>Submodular Dictionary Learning for Sparse Coding</h1>
+      <div class="authors">
+        <a href="https://zhuolinumd.github.io/">Zhuolin Jiang</a>,
+        <span>Guangxiao Zhang</span>,
+        <a href="http://www.umiacs.umd.edu/~lsd/">Larry S. Davis</a>
+      </div>
+    </section>
+
+    <!-- Abstract -->
+    <section class="card">
+      <h2>Abstract</h2>
+      <p>
+        A greedy-based approach to learn a compact and discriminative dictionary for sparse representation is presented.
+        The objective function consists of two components: entropy rate of a random walk on a graph and a discriminative
+        term. Dictionary learning is achieved by finding a graph topology that maximizes the objective function.
+        By exploiting the monotonicity and submodularity properties of the objective and matroid constraints,
+        a highly efficient greedy-based optimization algorithm is obtained. Experimental results demonstrate
+        superior performance on face, action, and object category recognition tasks.
+      </p>
+    </section>
+
+    <!-- Submodular Dictionary Learning -->
+    <section class="card">
+      <h2>Submodular Dictionary Learning</h2>
+
+      <p>(1) Entropy Rate of a Random Walk (favors compact and homogeneous clusters)</p>
+      <div class="figure">
+        <img src="SDL/entropyrate.png" width="780" height="227" />
+      </div>
+
+      <p>(2) Discriminative Function (encourages class purity and fewer clusters)</p>
+      <div class="figure">
+        <img src="SDL/discrminative.png" width="720" height="224" />
+      </div>
+    </section>
+
+    <!-- Sparse codes -->
+    <section class="card">
+      <h2>Examples of Sparse Codes</h2>
+      <p class="note">
+        Each waveform indicates the sum of absolute sparse codes for different testing samples from the same class.
+      </p>
+      <div class="figure">
+        <img src="SDL/scexamples.png" width="1050" height="312" />
+      </div>
+    </section>
+
+    <!-- Experimental results -->
+    <section class="card">
+      <h2>Experimental Results</h2>
+      <p>
+        Random face descriptors are used for Extended YaleB. For Caltech101, dense SIFT features and
+        spatial pyramid representations are extracted and reduced by PCA.
+      </p>
+
+      <p>(1) Classification accuracy using different dictionary sizes</p>
+      <div class="figure">
+        <img src="SDL/recognitionrate.png" width="700" height="298" />
+      </div>
+
+      <p>(2) Training time on Extended YaleB</p>
+      <div class="figure">
+        <img src="SDL/trainingtimeextendedyaleb.png" width="800" height="140" />
+      </div>
+
+      <p>(3) Training time on Caltech101</p>
+      <div class="figure">
+        <img src="SDL/trainingtimecaltech101.png" width="800" height="151" />
+      </div>
+    </section>
+
+    <!-- Downloads -->
+    <section class="card">
+      <h2>Downloads</h2>
+      <p class="note">All materials provided here are for non-commercial research use only.</p>
+      <ul>
+        <li><a href="SDL/SDL-code.zip">Source Code Only</a></li>
+        <li><a href="https://drive.google.com/file/d/1zGqArr1rpI2U6W6XIlVjr66mbgkA8fDH/view?usp=share_link">Training Data Only</a></li>
+        <li><a href="https://drive.google.com/file/d/1qExf_5C6Bj8SWrGHGqju1gPUFkUo-7VJ/view?usp=share_link">Source Code and Training Data</a></li>
+      </ul>
+    </section>
+
+    <!-- Citation -->
+    <section class="card">
+      <h2>Citation</h2>
+      <ul>
+        <li>
+          Zhuolin Jiang, Guangxiao Zhang, Larry S. Davis.
+          “Submodular Dictionary Learning for Sparse Coding”.
+          CVPR 2012.
+          [<a href="Publications/SubmodularDL.pdf">pdf</a>]
+          [<a href="Publications/SDL_CVPR2012_Slide.pdf">slide</a>]
+          [<a href="Publications/SubmodularDL-supp.pdf">supplementary materials</a>]
+        </li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <p>
+        If you have any questions about this source code, please contact:
+        <a href="mailto:zhuolinumd@gmail.com">zhuolinumd@gmail.com</a>
+      </p>
+    </section>
+
+    <footer class="footer">
+      Latest update 01-27-2024 · © 2026 Zhuolin Jiang
+    </footer>
+
+  </div>
 </body>
 </html>

@@ -1,89 +1,219 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Resources</title>
-<style type="text/css">
-body {
-	background-image: url(bg23.gif);
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resources | Zhuolin Jiang</title>
+  <meta name="description" content="Resources — Zhuolin Jiang" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #eef4f8;
+      --card: #ffffff;
+      --text: #0c1222;
+      --muted: rgba(12,18,34,.72);
+      --line: rgba(12,18,34,.12);
+      --accent: #2f6bff;
+      --shadow: 0 12px 30px rgba(12,18,34,.10);
+      --radius: 16px;
+      --max: 1040px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 26px 18px 60px; }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.9);
+      box-shadow: var(--shadow);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 220px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), #6aa8ff);
+      box-shadow: 0 0 0 4px rgba(47,107,255,.14);
+      flex: 0 0 auto;
+    }
+    .brand-title{ font-weight: 800; letter-spacing: .2px; }
+    .brand-sub{ color: var(--muted); font-size: 13px; margin-top: -2px; }
+
+    .nav{
+      display:flex; flex-wrap:wrap; gap:10px;
+      justify-content:flex-end;
+    }
+    .nav a{
+      font-size:14px;
+      font-weight:700;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+    }
+    .nav a:hover{
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.95);
+      text-decoration: none;
+    }
+    .nav a.active{
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.98);
+      text-decoration: none;
+    }
+
+    .card{
+      margin-top: 18px;
+      padding: 18px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    h1{
+      margin: 0 0 6px;
+      font-size: 26px;
+      letter-spacing: -0.4px;
+    }
+    .subtitle{
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+      border-bottom: 1px solid rgba(12,18,34,.10);
+      padding-bottom: 6px;
+    }
+
+    ul{
+      margin: 10px 0 0 18px;
+      padding: 0;
+    }
+    li{
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  </style>
 </head>
 
 <body>
-<table width="1003" height="650" border="0" align="center">
-  <tr>
-    <td width="942" height="45" bgcolor="#FFFFFF"><p align="center" style="font-size:24px">[<a href="index.html"; style="color:#06F">Home</a>] [<a href="Publications.html"; style="color:#06F">Publications</a>] [<a href="Research.html"; style="color:#06F">Research</a>] [<a href="http://scholar.google.com/citations?user=X55lT7kAAAAJ&amp;hl=en"; style="color:#06F">Citations</a>] </p>
-      <p style="margin:2px 0; font-size:22px; font-weight:bold; text-align:left; font-family: Tahoma, Geneva, sans-serif; text-shadow:2px 2px 2px #8F8F8F;">Source Code:</p>
-    </td>
-  </tr>
-  <tr>
-    <td height="84" bgcolor="#FFFFFF"><ul>
-      <li style="font-size:21px"><a href="http://www.umiacs.umd.edu/~fyang/papers/submodular.html"; style="color:#06F">Submodular Reranking (ACCV 2014)</a></li>
-      <p style="font-size:2px">&quot;</p>
-      <li style="font-size:21px"><a href="projectlcksvd.html"; style="color:#06F">Incremental Dictionary Learning (TPAMI 2013)</a></li>
-      <p style="font-size:2px">&quot;</p>
-      <li style="font-size:21px"><a href="projectsdl.html"; style="color:#06F">Submodular Dictionary Learning (CVPR 2012)</a></li>
-      <p style="font-size:2px">&quot;</p>
-      <li style="font-size:21px"><a href="projectlcksvd.html"; style="color:#06F">LC-KSVD (CVPR 2011)</a></li>
-      <p style="font-size:2px">&quot;</p>
-      <li style="font-size:21px"><a href="http://www.cs.umd.edu/~qiu/proj/mmi.html"; style="color:#06F">MMI (ICCV 2011)</a></li>
-      <p style="font-size:2px">&quot;</p>
-      <li style="font-size:21px"><a href="Keckgesturedataset.html"; style="color:#06F">Shape-motion Action Descriptor (ICCV 2009)</a></li>
-      <p style="font-size:2px">&quot;</p>
-    </ul></td>
-  </tr>
-  <tr>
-    <td height="45" bgcolor="#FFFFFF"> <p style="margin:2px 0; font-size:22px; font-weight:bold; text-align:left; font-family: Tahoma, Geneva, sans-serif; text-shadow:2px 2px 2px #8F8F8F;">Useful Links for Sparse Representation:</p></td>
-  </tr>
-  <tr>
-    <td height="175" bgcolor="#FFFFFF">          <ul style="text-align:left">
-        <li  style="font-size:21px"><a href="http://www.cs.technion.ac.il/~ronrubin/software.html"; style="color:#06F">OMP</a></li>
-        <p style="font-size:2px">&quot;</p>
-        <li  style="font-size:21px"><a href="http://www.cs.technion.ac.il/~ronrubin/software.html"; style="color:#06F">KSVD</a></li>
-        <p style="font-size:2px">&quot;</p>
-        <li  style="font-size:21px"><a href="http://ai.stanford.edu/~hllee/softwares/nips06-sparsecoding.htm"; style="color:#06F">Efficient Sparse Coding algorithm</a></li>
-        <p style="font-size:2px">&quot;</p>
-        <li  style="font-size:21px"><a href="http://www.stanford.edu/~boyd/l1_ls/"; style="color:#06F">Large scale L1 regularized least square</a></li>
-        <p style="font-size:2px">&quot;</p>
-        <li  style="font-size:21px"><a href="http://www.ifp.illinois.edu/~jyang29/LLC.htm"; style="color:#06F">Locality-constrained  Linear Coding (LLC)</a></li>
-        <p style="font-size:2px">&quot;</p>
-        <li  style="font-size:21px"><a href="http://www.di.ens.fr/willow/SPAMS/"; style="color:#06F">SPAMS</a></li>
-        <p style="font-size:2px">&quot;</p>
-        <li  style="font-size:21px"><a href="http://dsp.rice.edu/cs"; style="color:#06F">Compressive Sensing Tutorials</a></li>
-        <p style="font-size:2px">&quot;</p>
-    </ul></td>
-  </tr>
-  <tr>
-    <td height="56" bgcolor="#FFFFFF"><p style="margin:2px 0; font-size:22px; font-weight:bold; text-align:left; font-family: Tahoma, Geneva, sans-serif; text-shadow:2px 2px 2px #8F8F8F;">Useful Links for Submodular Optimization:</p></td>
-  </tr>
-  <tr>
-    <td height="85" bgcolor="#FFFFFF"><ul>
-      <li style="font-size:21px"><a href="http://submodularity.org/"; style="color:#06F">Submodularity Tutorial</a></li>
-      <p style="font-size:2px">&quot;</p>
-      <li style="font-size:21px"><a href="http://las.ethz.ch/sfo/index.html"; style="color:#06F">Submodularity Optimization Toolbox</a></li>
-      <p style="font-size:2px">&quot;</p>
-      <li style="font-size:21px"><a href="http://melodi.ee.washington.edu/~bilmes/pgs/sort_date.html"; style="color:#06F">Machine Learning Group at Univ. of Washington</a></li>
-      <p style="font-size:2px">&quot;</p>
-      <li style="font-size:21px"><a href="http://las.ethz.ch/publications.php?all"; style="color:#06F">Learning Group at ETH (Andreas Krause)</a></li>
-      <p style="font-size:2px">&quot;</p>
-      <li style="font-size:21px"><a href="http://www.select.cs.cmu.edu/publications/scripts/papers.cgi"; style="color:#06F">Select Lab at CMU (Carlos Guestrin)</a></li>
-      <p style="font-size:2px">&quot;</p>
-    </ul></td>
-  </tr>
-  <tr>
-    <td height="56" bgcolor="#FFFFFF"><p style="margin:2px 0; font-size:22px; font-weight:bold; text-align:left; font-family: Tahoma, Geneva, sans-serif; text-shadow:2px 2px 2px #8F8F8F;">Other Links</p></td>
-  </tr>
-  <tr>
-    <td height="56" bgcolor="#FFFFFF"><ul>
-      <li style="font-size:21px"><a href="http://videolectures.net/"; style="color:#06F">Video Lectures</a></li>
-      <p style="font-size:2px">&quot;</p>
-      <li style="font-size:21px"><a href="http://cvisioncentral.com/"; style="color:#06F">Computer Vision Central</a></li>
-      <p style="font-size:2px">&quot;</p>
-      <li style="font-size:21px"><a href="http://vision.ucsd.edu/~pdollar/toolbox/doc/index.html"; style="color:#06F">Matlab toolbox (Piotr Dollar)</a></li>
-      <p style="font-size:2px">&quot;</p>
-    </ul></td>
-  </tr>
-</table>
+  <div class="wrap">
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="dot" aria-hidden="true"></span>
+        <div>
+          <div class="brand-title">Zhuolin Jiang</div>
+          <div class="brand-sub">Principal Research Scientist · RTX</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="Publications.html">Publications</a>
+        <a href="https://scholar.google.com/citations?user=X55lT7kAAAAJ&amp;hl=en" target="_blank" rel="noopener">Citations</a>
+        <a href="Research.html">Research</a>
+        <a class="active" href="Resources.html">Resources</a>
+        <a href="Resume/resume_Dec2016.pdf">Resume</a>
+      </nav>
+    </header>
+
+    <section class="card">
+      <h1>Resources</h1>
+      <p class="subtitle">Source code and useful links.</p>
+    </section>
+
+    <section class="card">
+      <h2>Source Code</h2>
+      <ul>
+        <li><a href="http://www.umiacs.umd.edu/~fyang/papers/submodular.html">Submodular Reranking (ACCV 2014)</a></li>
+        <li><a href="projectlcksvd.html">Incremental Dictionary Learning (TPAMI 2013)</a></li>
+        <li><a href="projectsdl.html">Submodular Dictionary Learning (CVPR 2012)</a></li>
+        <li><a href="projectlcksvd.html">LC-KSVD (CVPR 2011)</a></li>
+        <li><a href="http://www.cs.umd.edu/~qiu/proj/mmi.html">MMI (ICCV 2011)</a></li>
+        <li><a href="Keckgesturedataset.html">Shape-motion Action Descriptor (ICCV 2009)</a></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Useful Links for Sparse Representation</h2>
+      <ul>
+        <li><a href="http://www.cs.technion.ac.il/~ronrubin/software.html">OMP</a></li>
+        <li><a href="http://www.cs.technion.ac.il/~ronrubin/software.html">KSVD</a></li>
+        <li><a href="http://ai.stanford.edu/~hllee/softwares/nips06-sparsecoding.htm">Efficient Sparse Coding algorithm</a></li>
+        <li><a href="http://www.stanford.edu/~boyd/l1_ls/">Large scale L1 regularized least square</a></li>
+        <li><a href="http://www.ifp.illinois.edu/~jyang29/LLC.htm">Locality-constrained Linear Coding (LLC)</a></li>
+        <li><a href="http://www.di.ens.fr/willow/SPAMS/">SPAMS</a></li>
+        <li><a href="http://dsp.rice.edu/cs">Compressive Sensing Tutorials</a></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Useful Links for Submodular Optimization</h2>
+      <ul>
+        <li><a href="http://submodularity.org/">Submodularity Tutorial</a></li>
+        <li><a href="http://las.ethz.ch/sfo/index.html">Submodularity Optimization Toolbox</a></li>
+        <li><a href="http://melodi.ee.washington.edu/~bilmes/pgs/sort_date.html">Machine Learning Group at Univ. of Washington</a></li>
+        <li><a href="http://las.ethz.ch/publications.php?all">Learning Group at ETH (Andreas Krause)</a></li>
+        <li><a href="http://www.select.cs.cmu.edu/publications/scripts/papers.cgi">Select Lab at CMU (Carlos Guestrin)</a></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Other Links</h2>
+      <ul>
+        <li><a href="http://videolectures.net/">Video Lectures</a></li>
+        <li><a href="http://cvisioncentral.com/">Computer Vision Central</a></li>
+        <li><a href="http://vision.ucsd.edu/~pdollar/toolbox/doc/index.html">Matlab toolbox (Piotr Dollar)</a></li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      <div>© 2026 Zhuolin Jiang</div>
+      <div><a href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Back to top</a></div>
+    </footer>
+
+  </div>
 </body>
 </html>
