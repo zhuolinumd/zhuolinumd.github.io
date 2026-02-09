@@ -72,17 +72,18 @@
       box-shadow: 0 0 0 4px rgba(122,167,255,.16);
       flex: 0 0 auto;
     }
-    .brand-title{ font-weight: 800; letter-spacing: .2px; }
-    .brand-sub{ color: var(--muted); font-size: 13px; margin-top: -2px; }
+    .brand-title{ font-weight:800; letter-spacing: .2px; }
+    .brand-sub{ font-size:13px; color: var(--muted); margin-top:-2px; }
 
     .nav{
       display:flex; flex-wrap:wrap; gap:10px;
       justify-content:flex-end;
     }
+    
     .nav a{
       font-size:14px;
       font-weight:700;
-      color: var(--muted);
+      color: vrgba(12,18,34,.72);
       padding: 8px 10px;
       border-radius: 12px;
       border: 1px solid transparent;
@@ -92,6 +93,11 @@
       border-color: var(--line);
       background: rgba(255,255,255,.05);
       text-decoration: none;
+    }
+    .nav a.active{
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.98);
     }
     .hero{
       margin-top: 18px;
@@ -251,6 +257,7 @@
       </div>
 
       <nav class="nav" aria-label="Primary">
+        <a class="active" href="index.html">Home</a>
         <a href="Publications.html">Publications</a>
         <a href="https://scholar.google.com/citations?user=X55lT7kAAAAJ&hl=en" target="_blank" rel="noopener">Citations</a>
         <a href="Research.html">Research</a>
